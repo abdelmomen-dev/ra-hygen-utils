@@ -2,9 +2,10 @@ require("dotenv").config();
 module.exports = {
   prompt: async ({ prompter }) => {
     const {
-      getTableFields,
+      getTableCols: getTableFields,
       getSchemaTables,
     } = require("../../utils/hasuraTablesInfo");
+    const { tableColsToObjects } = require("../../utils/resultToObjects");
     const { result: getSchemaTablesResult } = await getSchemaTables();
     const [_schemaTablesNet, ...schemaTablesNet] = getSchemaTablesResult;
     const tables = schemaTablesNet.map((tableNameInArr) => tableNameInArr[0]);
@@ -24,9 +25,10 @@ module.exports = {
       });
       resourceName = answers.resourceName;
     }
-    const { result: getTableFieldsResult } = await getTableFields(resourceName);
-    console.log(getTableFieldsResult, resourceName);
-    const [_tableCols, ...tableCols] = getTableFieldsResult;
+    const { result: getTableColsResult } = await getTableFields(resourceName);
+
+    const tableCols = tableColsToObjects(getTableColsResult);
+    console.log(tableCols);
     /*
     const answers = await prompter.prompt({
       type: "input",
@@ -34,6 +36,10 @@ module.exports = {
       message: `Please type your email [${resourceName}] again:`,
     });
     */
-    return { resourceName, tableCols };
+    return {
+      resourceName,
+      tableCols,
+      fieldsTmpPath: "/list-generator/new/_tmp/",
+    };
   },
 };

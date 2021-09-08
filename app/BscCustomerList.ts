@@ -2,14 +2,112 @@ export default function BscCustomerList(props: any) {
   const classes = useMyDefaultStyles();
   return (
     <>
-    id,uuid,NULL,code,integer,NULL,created_at,timestamp with time zone,NULL,updated_at,timestamp with time zone,NULL,name,jsonb,NULL,ext_data,jsonb,NULL,deleted_at,timestamp with time zone,NULL,customer_type_id,uuid,NULL,fullname,text,NULL,city_id,uuid,NULL,phone,text,NULL
     <List {...props}>
       <Datagrid rowClick="edit">
-          <TextField
-            source="properties.name_ar"
-            label="Name Ar"
-            headerClassName={classes.header}
-          />
+          
+            id
+            
+            
+            
+          
+            code
+            
+             
+               
+<NumberField
+  source="code"
+  label="custom_root.main.code"
+  headerClassName={defaultClss.header}
+/>;
+  
+            
+            
+          
+            created_at
+            
+            
+             
+               
+  <DateField
+    source="created_at"
+    headerClassName={defaultClss.header}
+    label="custom_root.main.created_at"
+  />
+    
+            
+          
+            updated_at
+            
+            
+             
+               
+  <DateField
+    source="updated_at"
+    headerClassName={defaultClss.header}
+    label="custom_root.main.updated_at"
+  />
+    
+            
+          
+            name
+            
+            
+            
+          
+            ext_data
+            
+            
+            
+          
+            deleted_at
+            
+            
+             
+               
+  <DateField
+    source="deleted_at"
+    headerClassName={defaultClss.header}
+    label="custom_root.main.deleted_at"
+  />
+    
+            
+          
+            customer_type_id
+            
+            
+            
+          
+            fullname
+             
+               
+<TextField
+  source="fullname"
+  headerClassName={defaultClss.header}
+  label="custom_root.main.fullname"
+/>
+  
+            
+            
+            
+          
+            city_id
+            
+            
+            
+          
+            phone
+             
+               
+<TextField
+  source="phone"
+  headerClassName={defaultClss.header}
+  label="custom_root.main.phone"
+/>
+  
+            
+            
+            
+          
         </Datagrid>
       </List>
     </>

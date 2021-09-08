@@ -23,7 +23,7 @@ module.exports = {
   hello: async () => {
     return "hello from hasuraTablesInfo";
   },
-  getTableFields: async (resource) => {
+  getTableCols: async (resource) => {
     const sql = `
     SELECT
       cols.column_name,
