@@ -1,15 +1,5 @@
 module.exports = {
   prompt: async ({ prompter, inquirer }) => {
-    const sleep = (milliseconds) => {
-      return new Promise((resolve) => setTimeout(resolve, milliseconds));
-    };
-    await sleep(300);
-
-    /*
-    return inquirer.prompt.run()
-      .then(answer => console.log('Answer:', answer))
-      .catch(console.error);
-      */
     const questions = [
       {
         type: "select",
