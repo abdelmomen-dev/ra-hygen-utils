@@ -1,11 +1,11 @@
-async function hasuraSqlResults(sql) {
-  const Axios = require("axios").default;
-  const headers = {
-    "Content-Type": "application/json",
-    "X-Hasura-Role": "admin",
-    "x-hasura-admin-secret": process.env.HASURA_SECRET,
-  };
+const Axios = require("axios").default;
+const headers = {
+  "Content-Type": "application/json",
+  "X-Hasura-Role": "admin",
+  "x-hasura-admin-secret": process.env.HASURA_SECRET,
+};
 
+async function hasuraSqlResults(sql) {
   const postData = {
     type: "run_sql",
     args: {
@@ -19,6 +19,17 @@ async function hasuraSqlResults(sql) {
   );
   return data;
 }
+
+async function restCall(location) {
+  const { data } = await Axios.get(
+    `https://caring-labrador-34.hasura.app/api/rest/${location}`,
+    {
+      headers,
+    }
+  );
+  return data;
+}
+
 module.exports = {
   hello: async () => {
     return "hello from hasuraTablesInfo";
@@ -61,5 +72,12 @@ module.exports = {
   WHERE tc.constraint_type = 'FOREIGN KEY' AND tc.table_name='${resource}';
     `;
     return await hasuraSqlResults(sql);
+  },
+  getGenCoreSettings: async () => {
+    const { core_setting } = await restCall("core_setting");
+    const genCoreSetting = core_setting.filter((setting) =>
+      setting.setting_name.includes("_gen_")
+    );
+    return genCoreSetting ? genCoreSetting : nulll;
   },
 };

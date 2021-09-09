@@ -1,4 +1,9 @@
 module.exports = {
+  /**
+   *
+   * @param {*} result any[]
+   * @returns {}
+   */
   tableColsToObjects: (result) => {
     if (Array.isArray(result)) {
       const [_tableCols, ...tableCols] = result;
