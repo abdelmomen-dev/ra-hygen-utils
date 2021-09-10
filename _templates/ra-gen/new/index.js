@@ -1,15 +1,15 @@
-const { _log } = require("../../utils/common");
-const { tableColsToFields } = require("../../utils/prepareHasuraFields");
-
 require("dotenv").config();
+const { _log } = require("../../../utils/common");
+const { tableColsToFields } = require("../../../utils/prepareHasuraFields");
+const {
+  getTableCols,
+  getSchemaTables,
+  getGenCoreSettings,
+} = require("../../../utils/hasuraTablesInfo");
+const { tableColsToObjects } = require("../../../utils/resultToObjects");
+
 module.exports = {
   prompt: async ({ prompter }) => {
-    const {
-      getTableCols,
-      getSchemaTables,
-      getGenCoreSettings,
-    } = require("../../utils/hasuraTablesInfo");
-    const { tableColsToObjects } = require("../../utils/resultToObjects");
     const { result: getSchemaTablesResult } = await getSchemaTables();
     const [_schemaTablesNet, ...schemaTablesNet] = getSchemaTablesResult;
     const tables = schemaTablesNet.map((tableNameInArr) => tableNameInArr[0]);
