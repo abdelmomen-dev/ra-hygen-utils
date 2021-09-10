@@ -1,0 +1,10 @@
+<% if(typeof field != "undefined") { %> 
+<ReferenceField
+source="<%= field.source %>"
+reference="<%= field.reference %>"
+headerClassName={defaultClss.header}
+label="custom_root.main.<%= field.label %>"
+>
+  <TextField source="label" />
+</ReferenceField>
+<% } %> 

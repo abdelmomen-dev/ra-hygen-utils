@@ -1,0 +1,10 @@
+<% if(typeof field != "undefined") { %> 
+<ReferenceInput
+source="<%= field.source %>"
+reference="<%= field.reference %>"
+headerClassName={defaultClss.header}
+label="custom_root.main.<%= field.label %>"
+>
+  <SelectInput optionText="label" />
+</ReferenceInput>
+<% } %> 

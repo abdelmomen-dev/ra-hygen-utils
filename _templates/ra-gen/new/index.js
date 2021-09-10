@@ -1,3 +1,4 @@
+const { _log } = require("../../utils/common");
 const { tableColsToFields } = require("../../utils/prepareHasuraFields");
 
 require("dotenv").config();
@@ -12,14 +13,16 @@ module.exports = {
     const { result: getSchemaTablesResult } = await getSchemaTables();
     const [_schemaTablesNet, ...schemaTablesNet] = getSchemaTablesResult;
     const tables = schemaTablesNet.map((tableNameInArr) => tableNameInArr[0]);
-    tables.push("q");
+    const tablesNames = [...tables];
+    console.log(tables);
     let { resourceName } = await prompter.prompt({
       type: "select",
       name: "resourceName",
       message: "Please Select resource or select q for writing it manually",
       choices: tables,
     });
-    console.log(resourceName);
+
+    _log(resourceName);
     if (resourceName === "q") {
       const answers = await prompter.prompt({
         type: "input",
@@ -53,7 +56,7 @@ module.exports = {
     }
 
     const tableCols = tableColsToObjects(getTableColsResult);
-    const raFields = tableColsToFields(tableCols);
+    const raFields = tableColsToFields(tableCols, tablesNames);
 
     return {
       resourceName,

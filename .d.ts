@@ -7,4 +7,6 @@ declare type TableCol = {
 declare type RaField = {
   tmp_name: string;
   source: string;
+  reference: string;
+  label: string;
 };
