@@ -1,12 +1,12 @@
 require("dotenv").config();
-const { _log } = require("../../../utils/common");
-const { tableColsToFields } = require("../../../utils/prepareHasuraFields");
+const { _log } = require("../../utils/common");
+const { tableColsToFields } = require("../../utils/prepareHasuraFields");
 const {
   getTableCols,
   getSchemaTables,
   getGenCoreSettings,
-} = require("../../../utils/hasuraTablesInfo");
-const { tableColsToObjects } = require("../../../utils/resultToObjects");
+} = require("../../utils/hasuraTablesInfo");
+const { tableColsToObjects } = require("../../utils/resultToObjects");
 const inflection = require("inflection");
 module.exports = {
   prompt: async ({ prompter }) => {
