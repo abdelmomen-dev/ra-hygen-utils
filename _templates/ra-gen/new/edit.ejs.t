@@ -6,15 +6,13 @@ force: true
 ---
 
 import React from 'react';
-import { Edit, EditProps, Datagrid } from 'react-admin';
+import { Edit, EditProps } from 'react-admin';
 import <%= ResourceName %>Form from './<%= ResourceName %>Form';
 
 export default function <%= ResourceNameEdit %>(props: EditProps) {
   return (
     <Edit {...props}>
-      <Datagrid rowClick="edit">
-        <<%= ResourceName %>Form {...props} />
-      </Datagrid>
+      <<%= ResourceName %>Form {...props} />
     </Edit>
   );
 }
