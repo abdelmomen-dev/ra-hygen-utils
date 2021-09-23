@@ -6,7 +6,7 @@ force: true
 ---
 
 import React from 'react';
-import { Edit, EditProps } from 'react-admin';
+import { Edit, EditProps, Datagrid } from 'react-admin';
 import <%= ResourceName %>Form from './<%= ResourceName %>Form';
 
 export default function <%= ResourceNameEdit %>(props: EditProps) {

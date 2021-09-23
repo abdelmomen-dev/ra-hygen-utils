@@ -17,11 +17,12 @@ import {
   TextField,
   TextInput,
   useLocale,
+  Datagrid
 } from "react-admin";
 import { useMyDefaultStyles } from "../../../styles/default";
 
 export default function <%= ResourceNameList %>(props: any) {
-  const classes = useMyDefaultStyles();
+  const defaultClss = useMyDefaultStyles();
   return (
     <>
     <%# 

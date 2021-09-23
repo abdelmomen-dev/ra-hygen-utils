@@ -6,7 +6,7 @@ force: true
 ---
 
 import React from 'react';
-import { Create, CreateProps } from 'react-admin';
+import { Create, CreateProps, Datagrid } from 'react-admin';
 import <%= ResourceName %>Form from './<%= ResourceName %>Form';
 
 export default function <%= ResourceNameCreate %>(props: CreateProps) {

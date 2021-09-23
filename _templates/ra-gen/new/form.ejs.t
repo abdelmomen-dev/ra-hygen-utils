@@ -15,7 +15,7 @@ import {
 import { useMyDefaultStyles } from "../../../styles/default";
 
 export default function <%= ResourceNameForm %>(props: any) {
-  const classes = useMyDefaultStyles();
+  const defaultClss = useMyDefaultStyles();
   return (
     <SimpleForm {...props}>
         <% raFields.forEach((field)=>{ %>
