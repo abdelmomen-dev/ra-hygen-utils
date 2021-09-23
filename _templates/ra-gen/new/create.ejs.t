@@ -1,7 +1,7 @@
 ---
 _ResourceName: <% ResourceName = h.inflection.camelize(resourceName) %>
 _ResourceNameCreate: <% ResourceNameCreate = h.inflection.camelize(resourceName)+`Create` %>
-to: app/<%= predir+ResourceNameCreate %>.ts
+to: <%= predir+ResourceNameCreate %>.ts
 force: true
 ---
 

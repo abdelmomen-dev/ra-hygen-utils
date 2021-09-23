@@ -1,7 +1,7 @@
 ---
 _ResourceName: <% ResourceName = h.inflection.camelize(resourceName) %>
 _ResourceNameEdit: <% ResourceNameEdit = h.inflection.camelize(resourceName)+`Edit` %>
-to: app/<%= predir+ResourceNameEdit %>.ts
+to: <%= predir+ResourceNameEdit %>.ts
 force: true
 ---
 

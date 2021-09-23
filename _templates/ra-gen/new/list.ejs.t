@@ -1,6 +1,6 @@
 ---
 _ResourceNameList: <% ResourceNameList = h.inflection.camelize(resourceName)+`List` %>
-to: app/<%= predir+ResourceNameList %>.ts
+to: <%= predir+ResourceNameList %>.ts
 force: true
 ---
 

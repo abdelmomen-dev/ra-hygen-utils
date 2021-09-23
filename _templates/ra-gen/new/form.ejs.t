@@ -1,6 +1,6 @@
 ---
 _ResourceNameForm: <% ResourceNameForm = h.inflection.camelize(resourceName)+`Form` %>
-to: app/<%= predir+ResourceNameForm %>.ts
+to: <%= predir+ResourceNameForm %>.ts
 force: true
 ---
 

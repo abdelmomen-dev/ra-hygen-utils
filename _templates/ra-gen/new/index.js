@@ -7,7 +7,7 @@ const {
   getGenCoreSettings,
 } = require("../../../utils/hasuraTablesInfo");
 const { tableColsToObjects } = require("../../../utils/resultToObjects");
-
+const inflection = require("inflection");
 module.exports = {
   prompt: async ({ prompter }) => {
     const { result: getSchemaTablesResult } = await getSchemaTables();
@@ -36,7 +36,7 @@ module.exports = {
     const genCoreSetting = await getGenCoreSettings();
 
     // Get Predirs
-    let predir = "";
+    let predir = "src/components/";
     const preDirsSetting = genCoreSetting.filter(
       (setting) => setting.setting_name === "_gen_predirs"
     );
@@ -47,13 +47,14 @@ module.exports = {
     console.log(preDirsSettingVal);
     // Check if Resource name contains predir
     if (resourceName.includes("_")) {
-      const [prefix, ..._restResourceName] = resourceName.split("_");
-      console.log("prefix", prefix, preDirsSetting);
+      const [prefix, ...restResourceName] = resourceName.split("_");
+      console.log("prefix", prefix, preDirsSetting, restResourceName);
       if (preDirsSettingVal && preDirsSettingVal.includes(prefix)) {
         resourceName = resourceName.replace(prefix + "_", "");
-        predir = prefix + "/";
+        predir += prefix + "/";
       }
     }
+    predir += inflection.camelize(resourceName, true) + "/";
 
     const tableCols = tableColsToObjects(getTableColsResult);
     const raFields = tableColsToFields(tableCols, tablesNames);
